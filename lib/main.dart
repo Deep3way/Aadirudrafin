@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
-
 import 'aboutus.dart';
 
 void main() async {
@@ -63,6 +62,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  bool _isDarkMode = true;
+
 
   final List<Widget> _widgetOptions = [
     FirestoreListView(),
@@ -71,15 +72,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Define colors based on dark mode status
+    Color appBarTextColor = _isDarkMode ? Colors.white : Colors.black;
+    Color cardColor = _isDarkMode ? Colors.white : Colors.white;
+    Color cardItemColor = _isDarkMode ? Colors.black : Colors.white;
+    Color darkModeButtonColor = _isDarkMode ? Colors.white : Colors.black;
+
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: _isDarkMode ? Colors.black : Colors.white, // Set background color based on mode
         appBar: AppBar(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 "Aadirudra",
-                style: TextStyle(fontSize: 22),
+                style: TextStyle(fontSize: 22, color: appBarTextColor), // Set text color based on mode
               ),
               Text(
                 " Finance",
@@ -89,6 +96,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
+          actions: [
+            IconButton(
+              icon: Icon(_isDarkMode ? Icons.light_mode : Icons.dark_mode ),
+              color: darkModeButtonColor,
+              onPressed: () {
+                setState(() {
+                  _isDarkMode = !_isDarkMode;
+                });
+              },
+            ),
+          ],
         ),
         body: Stack(children: [
           _widgetOptions.elementAt(_selectedIndex),
@@ -98,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
               bottom: 0,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: cardColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0),
@@ -208,7 +226,7 @@ class _FirestoreListViewState extends State<FirestoreListView> {
                                   ? Colors.red
                                   : Colors.green)),
                       SizedBox(height: 2),
-                      Text(Price),
+                      Text("₹"+Price),
                       SizedBox(height: 2),
                       Row(children: [
                         Text('Date: $formattedDate'),

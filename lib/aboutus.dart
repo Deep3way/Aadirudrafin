@@ -5,16 +5,32 @@ void main() {
   runApp(AboutUsPage());
 }
 
-class AboutUsPage extends StatelessWidget {
+class AboutUsPage extends StatefulWidget {
+// Constructor
+  @override
+  _AboutUsPageState createState() => _AboutUsPageState();
+}
+
+class _AboutUsPageState extends State<AboutUsPage> {
+  bool _isDarkMode = true; // Track the current mode
+  
+
   @override
   Widget build(BuildContext context) {
+    // Define colors based on dark mode status
+    Color textColor = _isDarkMode ? Colors.white : Colors.black;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black, // Keep the background color consistent
         body: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height*1.2, // Set the desired height
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 1.2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -25,7 +41,7 @@ class AboutUsPage extends StatelessWidget {
                   '3WayTechnologies',
                   style: TextStyle(
                     fontSize: 24,
-                    color: Colors.white,
+                    color: textColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -34,7 +50,7 @@ class AboutUsPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'A team of Creative Minds designing best Apps and Website for the World.',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: textColor),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -46,19 +62,31 @@ class AboutUsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                          onTap: () => launch('https://3waytech.co/'),
-                          child: Image.asset('assets/image/website.png',height: 20,width: 20,color: Colors.white,)),
+                        onTap: () => launch('https://3waytech.co/'),
+                        child: Image.asset(
+                            'assets/image/website.png', height: 20,
+                            width: 20,
+                            color: textColor),
+                      ),
                       Spacer(),
                       InkWell(
-                          onTap: () => launch('https://www.instagram.com/3waytech/'),
-                          child: Image.asset('assets/image/insta.png',height: 20,width: 20,color: Colors.white,)),
+                        onTap: () =>
+                            launch('https://www.instagram.com/3waytech/'),
+                        child: Image.asset('assets/image/insta.png', height: 20,
+                            width: 20,
+                            color: textColor),
+                      ),
                       Spacer(),
                       InkWell(
-                          onTap: () => launch('https://www.facebook.com/3waytech'),
-                          child: Image.asset('assets/image/fb.png',height: 20,width: 20,color: Colors.white,)),
+                        onTap: () =>
+                            launch('https://www.facebook.com/3waytech'),
+                        child: Image.asset('assets/image/fb.png', height: 20,
+                            width: 20,
+                            color: textColor),
+                      ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -67,7 +95,6 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 }
-
 class CompanyLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
