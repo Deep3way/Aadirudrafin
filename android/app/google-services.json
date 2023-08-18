@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "41946101414",
+    "project_id": "aadirudrafin",
+    "storage_bucket": "aadirudrafin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41946101414:android:3f49249413d798b15ee667",
+        "android_client_info": {
+          "package_name": "com.example.aadirudrafin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41946101414-52485lpvcpn8ec218o73lnhfq3soileu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy3cI4zWolwiIQDFQGcn9f-15k0g08KPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41946101414-52485lpvcpn8ec218o73lnhfq3soileu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
